@@ -1,0 +1,31 @@
+{
+  "name": "git-exercises-classroom",
+  "version": "1.0.0",
+  "description": "A collection of progressive Git exercises for GitHub Classroom with automated testing.",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo 'Proyecto de ejercicios de Git iniciado. Usa npm test para ejecutar las pruebas.'",
+    "dev": "npm run test:watch",
+    "test": "jest",
+    "test:git": "jest --testPathPattern=\"[123]-.*\\.test\\.js$\"",
+    "test:github": "jest --testPathPattern=\"[4567]-.*\\.test\\.js$\"",
+    "test:all": "jest tests/ejercicio/",
+    "test:verbose": "jest --verbose",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "git",
+    "github",
+    "exercises",
+    "github-classroom",
+    "version-control",
+    "education",
+    "learning"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}

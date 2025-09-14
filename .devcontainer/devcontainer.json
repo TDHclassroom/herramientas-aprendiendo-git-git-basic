@@ -1,0 +1,41 @@
+{
+	"name": "Node.js 22 Dev Container",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+	
+	// Configuración de VS Code
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash"
+			},
+			"extensions": [
+				"ms-vscode.vscode-json",
+				"esbenp.prettier-vscode",
+				"bradlc.vscode-tailwindcss",
+				"ms-vscode.vscode-typescript-next",
+				"formulahendry.auto-rename-tag",
+				"ms-vscode.vscode-eslint"
+			]
+		}
+	},
+
+	// Puertos a reenviar
+	"forwardPorts": [3000, 8080],
+
+	// Comando post-creación para instalar dependencias
+	"postCreateCommand": "npm install",
+
+	// Comando post-start
+	"postStartCommand": "echo 'Dev container iniciado correctamente!'",
+
+	// Variables de entorno
+	"containerEnv": {
+		"NODE_ENV": "development"
+	},
+
+	// Características adicionales (ahora funcionarán correctamente)
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	}
+}

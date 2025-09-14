@@ -1,0 +1,74 @@
+name: GitHub Classroom Workflow
+
+on: 
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Run all tests
+      run: npm test
+      
+    - name: Generate coverage report
+      run: npm run test:coverage
+      
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+        
+    # Individual test runs for detailed feedback
+    - name: Test Git Initialization
+      id: test-git-init
+      run: npm test ejercicio/1
+      continue-on-error: true
+      
+    - name: Test First Commit
+      id: test-first-commit
+      run: npm test ejercicio/2
+      continue-on-error: true
+      
+    - name: Test Multiple Commits
+      id: test-multiple-commits
+      run: npm test ejercicio/3
+      continue-on-error: true
+      
+    - name: Test Branches
+      id: test-branches
+      run: npm test ejercicio/4
+      continue-on-error: true
+      
+    - name: Test GitHub Integration
+      id: test-github
+      run: npm test ejercicio/5
+      continue-on-error: true
+      
+    - name: Test Pull and Clone
+      id: test-pull-clone
+      run: npm test ejercicio/6
+      continue-on-error: true
+      
+    - name: Test Conflict Resolution
+      id: test-conflicts
+      run: npm test ejercicio/7
+      continue-on-error: true

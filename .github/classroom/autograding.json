@@ -1,0 +1,74 @@
+{
+    "tests": [
+        {
+            "name": "Ejercicio 1: Inicializar Git",
+            "setup": "npm install",
+            "run": "npm test ejercicio/1",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 0.1
+        },
+        {
+            "name": "Ejercicio 2: Primer Commit",
+            "setup": "",
+            "run": "npm test ejercicio/2",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 0.15
+        },
+        {
+            "name": "Ejercicio 3: Modificar y Commits",
+            "setup": "",
+            "run": "npm test ejercicio/3",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 0.15
+        },
+        {
+            "name": "Ejercicio 4: Trabajar con Ramas",
+            "setup": "",
+            "run": "npm test ejercicio/4",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 15,
+            "points": 0.2
+        },
+        {
+            "name": "Ejercicio 5: GitHub y Push",
+            "setup": "",
+            "run": "npm test ejercicio/5",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 15,
+            "points": 0.2
+        },
+        {
+            "name": "Ejercicio 6: Pull y Clone",
+            "setup": "",
+            "run": "npm test ejercicio/6",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 0.1
+        },
+        {
+            "name": "Ejercicio 7: Manejo de Conflictos",
+            "setup": "",
+            "run": "npm test ejercicio/7",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 15,
+            "points": 0.1
+        }
+    ]
+}
