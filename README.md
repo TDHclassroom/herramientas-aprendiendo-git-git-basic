@@ -2,12 +2,18 @@
 
 Aquí les dejo una colección completa de ejercicios progresivos para aprender Git y GitHub, diseñados para GitHub Classroom con autocalificación automática usando Jest.
 
-## 📖 Recursos Adicionales
+## � **PARA ESTUDIANTES: LEE ESTO PRIMERO**
 
-- [Documentación oficial de Git](https://git-scm.com/doc)
-- [GitHub Learning Lab](https://lab.github.com/)
-- [Interactive Git Tutorial](https://learngitbranching.js.org/)
+### 📖 **Guía Completa para Aprobar Todos los Tests**
+👉 **[GUIA-ESTUDIANTES.md](GUIA-ESTUDIANTES.md)** - **INSTRUCCIONES PASO A PASO OBLIGATORIAS**
 
+### 🔍 **Script de Verificación**
+Antes de hacer push, ejecuta:
+```bash
+./verificar-ejercicios.sh
+```
+
+---
 
 ## 📚 Descripción del Proyecto
 

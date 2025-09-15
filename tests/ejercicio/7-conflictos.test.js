@@ -24,7 +24,7 @@ describe('Ejercicio 7: Manejo de conflictos', () => {
     try {
       branches = execSync('git branch', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener la lista de ramas.');
+      throw new Error('No se pudo obtener la lista de ramas.');
     }
     
     expect(branches).not.toContain('feature/conflicto-simulado');
@@ -36,7 +36,7 @@ describe('Ejercicio 7: Manejo de conflictos', () => {
     try {
       currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { cwd: rootPath, encoding: 'utf8' }).trim();
     } catch (error) {
-      fail('No se pudo obtener la rama actual.');
+      throw new Error('No se pudo obtener la rama actual.');
     }
     
     expect(['main', 'master']).toContain(currentBranch);
@@ -48,7 +48,7 @@ describe('Ejercicio 7: Manejo de conflictos', () => {
     try {
       gitLog = execSync('git log --oneline --graph -10', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener el historial de commits.');
+      throw new Error('No se pudo obtener el historial de commits.');
     }
     
     // Buscar evidencia de merge o resolución de conflicto
@@ -68,7 +68,7 @@ describe('Ejercicio 7: Manejo de conflictos', () => {
     try {
       commitMessages = execSync('git log --pretty=format:"%s" -10', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener los mensajes de commit.');
+      throw new Error('No se pudo obtener los mensajes de commit.');
     }
     
     const hasConflictWork = commitMessages.toLowerCase().includes('conflicto') || 
@@ -86,7 +86,7 @@ describe('Ejercicio 7: Manejo de conflictos', () => {
     try {
       status = execSync('git status --porcelain', { cwd: rootPath, encoding: 'utf8' }).trim();
     } catch (error) {
-      fail('No se pudo verificar el estado del repositorio.');
+      throw new Error('No se pudo verificar el estado del repositorio.');
     }
     
     const lines = status.split('\n').filter(line => line.trim() !== '');
@@ -109,7 +109,7 @@ describe('Ejercicio 7: Manejo de conflictos', () => {
       const logOutput = execSync('git rev-list --count HEAD', { cwd: rootPath, encoding: 'utf8' });
       commitCount = parseInt(logOutput.trim());
     } catch (error) {
-      fail('No se pudo obtener el historial de commits.');
+      throw new Error('No se pudo obtener el historial de commits.');
     }
     
     expect(commitCount).toBeGreaterThanOrEqual(7);

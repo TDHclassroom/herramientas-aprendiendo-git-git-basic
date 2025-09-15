@@ -22,7 +22,7 @@ describe('Ejercicio 4: Trabajar con ramas (branches)', () => {
     try {
       currentBranch = execSync('git rev-parse --abbrev-ref HEAD', { cwd: rootPath, encoding: 'utf8' }).trim();
     } catch (error) {
-      fail('No se pudo obtener la rama actual.');
+      throw new Error('No se pudo obtener la rama actual.');
     }
     
     expect(['main', 'master']).toContain(currentBranch);
@@ -34,7 +34,7 @@ describe('Ejercicio 4: Trabajar con ramas (branches)', () => {
     try {
       branches = execSync('git branch', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener la lista de ramas.');
+      throw new Error('No se pudo obtener la lista de ramas.');
     }
     
     expect(branches).not.toContain('feature/nueva-funcionalidad');
@@ -47,7 +47,7 @@ describe('Ejercicio 4: Trabajar con ramas (branches)', () => {
       const logOutput = execSync('git rev-list --count HEAD', { cwd: rootPath, encoding: 'utf8' });
       commitCount = parseInt(logOutput.trim());
     } catch (error) {
-      fail('No se pudo obtener el historial de commits.');
+      throw new Error('No se pudo obtener el historial de commits.');
     }
     
     expect(commitCount).toBeGreaterThanOrEqual(4);
@@ -59,7 +59,7 @@ describe('Ejercicio 4: Trabajar con ramas (branches)', () => {
     try {
       trackedFiles = execSync('git ls-files', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener los archivos trackeados por Git.');
+      throw new Error('No se pudo obtener los archivos trackeados por Git.');
     }
     
     expect(trackedFiles).toContain('features.txt');
@@ -71,7 +71,7 @@ describe('Ejercicio 4: Trabajar con ramas (branches)', () => {
     try {
       commitMessages = execSync('git log --oneline', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener el historial de commits.');
+      throw new Error('No se pudo obtener el historial de commits.');
     }
     
     // Buscar evidencia de trabajo con características o merge

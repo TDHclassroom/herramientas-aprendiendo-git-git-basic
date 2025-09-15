@@ -20,7 +20,7 @@ describe('Ejercicio 5: Conectar con GitHub y hacer push', () => {
     try {
       remotes = execSync('git remote -v', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener la configuración de remotes. Asegúrate de haber configurado origin.');
+      throw new Error('No se pudo obtener la configuración de remotes. Asegúrate de haber configurado origin.');
     }
     
     expect(remotes).toContain('origin');
@@ -34,7 +34,7 @@ describe('Ejercicio 5: Conectar con GitHub y hacer push', () => {
       const logOutput = execSync('git rev-list --count HEAD', { cwd: rootPath, encoding: 'utf8' });
       commitCount = parseInt(logOutput.trim());
     } catch (error) {
-      fail('No se pudo obtener el historial de commits.');
+      throw new Error('No se pudo obtener el historial de commits.');
     }
     
     expect(commitCount).toBeGreaterThanOrEqual(5);
@@ -46,7 +46,7 @@ describe('Ejercicio 5: Conectar con GitHub y hacer push', () => {
     try {
       trackedFiles = execSync('git ls-files', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener los archivos trackeados por Git.');
+      throw new Error('No se pudo obtener los archivos trackeados por Git.');
     }
     
     expect(trackedFiles).toContain('AUTHORS.md');
@@ -58,7 +58,7 @@ describe('Ejercicio 5: Conectar con GitHub y hacer push', () => {
     try {
       status = execSync('git status --porcelain', { cwd: rootPath, encoding: 'utf8' }).trim();
     } catch (error) {
-      fail('No se pudo verificar el estado del repositorio.');
+      throw new Error('No se pudo verificar el estado del repositorio.');
     }
     
     // Si hay archivos de configuración o test que no están trackeados, los ignoramos

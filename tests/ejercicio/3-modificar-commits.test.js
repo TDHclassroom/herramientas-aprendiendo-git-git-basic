@@ -31,7 +31,7 @@ describe('Ejercicio 3: Modificar archivos y commits adicionales', () => {
       const logOutput = execSync('git rev-list --count HEAD', { cwd: rootPath, encoding: 'utf8' });
       commitCount = parseInt(logOutput.trim());
     } catch (error) {
-      fail('No se pudo obtener el historial de commits. Asegúrate de haber hecho al menos 3 commits.');
+      throw new Error('No se pudo obtener el historial de commits. Asegúrate de haber hecho al menos 3 commits.');
     }
     
     expect(commitCount).toBeGreaterThanOrEqual(3);
@@ -43,7 +43,7 @@ describe('Ejercicio 3: Modificar archivos y commits adicionales', () => {
     try {
       commitMessages = execSync('git log --pretty=format:"%s" -3', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener los mensajes de commit.');
+      throw new Error('No se pudo obtener los mensajes de commit.');
     }
     
     // Verificar que hay mensajes de commit (no están vacíos)
@@ -61,7 +61,7 @@ describe('Ejercicio 3: Modificar archivos y commits adicionales', () => {
     try {
       trackedFiles = execSync('git ls-files', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener los archivos trackeados por Git.');
+      throw new Error('No se pudo obtener los archivos trackeados por Git.');
     }
     
     expect(trackedFiles).toContain('mi-proyecto.md');

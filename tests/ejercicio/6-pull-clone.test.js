@@ -35,7 +35,7 @@ describe('Ejercicio 6: Clonar y pull de GitHub', () => {
       const logOutput = execSync('git rev-list --count HEAD', { cwd: rootPath, encoding: 'utf8' });
       commitCount = parseInt(logOutput.trim());
     } catch (error) {
-      fail('No se pudo obtener el historial de commits.');
+      throw new Error('No se pudo obtener el historial de commits.');
     }
     
     expect(commitCount).toBeGreaterThanOrEqual(6);
@@ -47,7 +47,7 @@ describe('Ejercicio 6: Clonar y pull de GitHub', () => {
     try {
       trackedFiles = execSync('git ls-files', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener los archivos trackeados por Git.');
+      throw new Error('No se pudo obtener los archivos trackeados por Git.');
     }
     
     expect(trackedFiles).toContain('sync-test.txt');
@@ -59,7 +59,7 @@ describe('Ejercicio 6: Clonar y pull de GitHub', () => {
     try {
       commitMessages = execSync('git log --pretty=format:"%s"', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener los mensajes de commit.');
+      throw new Error('No se pudo obtener los mensajes de commit.');
     }
     
     const hasSyncWork = commitMessages.toLowerCase().includes('sincronización') || 
@@ -77,7 +77,7 @@ describe('Ejercicio 6: Clonar y pull de GitHub', () => {
     try {
       status = execSync('git status --porcelain', { cwd: rootPath, encoding: 'utf8' }).trim();
     } catch (error) {
-      fail('No se pudo verificar el estado del repositorio.');
+      throw new Error('No se pudo verificar el estado del repositorio.');
     }
     
     const lines = status.split('\n').filter(line => line.trim() !== '');

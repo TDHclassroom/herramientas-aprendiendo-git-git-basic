@@ -30,7 +30,7 @@ describe('Ejercicio 1: Inicializar Git', () => {
         userEmail = execSync('git config --global user.email', { encoding: 'utf8' }).trim();
       }
     } catch (error) {
-      fail('No se pudo obtener la configuración de Git. Asegúrate de haber configurado user.name y user.email');
+      throw new Error('No se pudo obtener la configuración de Git. Asegúrate de haber configurado user.name y user.email');
     }
     
     expect(userName).toBeTruthy();
@@ -46,7 +46,7 @@ describe('Ejercicio 1: Inicializar Git', () => {
     try {
       gitStatus = execSync('git status --porcelain', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo ejecutar git status. Verifica que el repositorio esté inicializado correctamente.');
+      throw new Error('No se pudo ejecutar git status. Verifica que el repositorio esté inicializado correctamente.');
     }
     
     // No verificamos el contenido específico, solo que el comando funcione

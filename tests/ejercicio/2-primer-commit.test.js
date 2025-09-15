@@ -37,7 +37,7 @@ describe('Ejercicio 2: Crear archivos y hacer primer commit', () => {
       const logOutput = execSync('git rev-list --count HEAD', { cwd: rootPath, encoding: 'utf8' });
       commitCount = parseInt(logOutput.trim());
     } catch (error) {
-      fail('No se pudo obtener el historial de commits. Asegúrate de haber hecho al menos un commit.');
+      throw new Error('No se pudo obtener el historial de commits. Asegúrate de haber hecho al menos un commit.');
     }
     
     expect(commitCount).toBeGreaterThanOrEqual(1);
@@ -49,7 +49,7 @@ describe('Ejercicio 2: Crear archivos y hacer primer commit', () => {
     try {
       filesInCommit = execSync('git ls-tree --name-only HEAD', { cwd: rootPath, encoding: 'utf8' });
     } catch (error) {
-      fail('No se pudo obtener los archivos del último commit.');
+      throw new Error('No se pudo obtener los archivos del último commit.');
     }
     
     expect(filesInCommit).toContain('mi-proyecto.md');
